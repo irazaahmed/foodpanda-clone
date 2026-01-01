@@ -14,6 +14,9 @@ html, body {
   box-sizing: border-box;
   position: relative;
 }
+body {
+  padding-top: 70px; /* adjust if your navbar is taller */
+}
 
 /* Prevent Bootstrap row gutters from overflowing */
 .container, .container-fluid {
@@ -42,8 +45,12 @@ section {
 .navbar {
   width: 100%;
   max-width: 100%;
-  overflow-x: hidden;
   background-color: #ffffff;
+  position: fixed;       /* make it fixed */
+  top: 0;
+  left: 0;
+  z-index: 1000;         /* stay on top of content */
+  transition: transform 0.4s ease, background-color 0.3s ease;
 }
 
 .navbar .container {
@@ -539,39 +546,80 @@ section {
 .footer-links a:hover {
   color: #FF2B85;
 }
-
-.social-icons a img {
-  width: 28px;
-  height: 28px;
-  margin-right: 12px;
-  filter: brightness(0) invert(1);
-  transition: filter 0.3s ease, transform 0.3s ease;
+/* === Social Icons (Follow Us) === */
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
-.social-icons a img:hover {
-  filter: brightness(0) saturate(100%) invert(47%) sepia(89%) saturate(4596%) hue-rotate(313deg) brightness(98%) contrast(101%);
-  transform: scale(1.1);
+.social-icons a {
+  font-size: 1.6rem;
+  color: #fff;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.footer-divider {
-  border-color: #444;
+.social-icons a:hover {
+  color: #FF2B85;
+  transform: scale(1.2);
 }
 
-.footer-bottom {
-  color: #bbb;
-  font-size: 0.95rem;
-}
-
-/* Responsive Footer */
 @media (max-width: 768px) {
-  .footer {
+    .footer {
     text-align: center;
   }
 
-  .social-icons a img {
-    margin: 0 8px;
+  .social-icons {
+    justify-content: center;
   }
 }
+
+
+/* === Move to Top Button === */
+.move-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #FF2B85;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+.move-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  bottom: 40px;
+}
+
+.move-to-top:hover {
+  background-color: #e02674;
+  transform: scale(1.1);
+}
+
+/* === Navbar Hide on Scroll === */
+.navbar {
+  transition: transform 0.4s ease, background-color 0.3s ease;
+}
+
+.navbar.nav-hidden {
+  transform: translateY(-100%);
+}
+
 
 
 
