@@ -66,6 +66,12 @@
 .btn-language:hover {
   background-color: #e02674;
 }
+/* ===== NAVBAR SHADOW WHEN SCROLLED ===== */
+.navbar-shadow {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
 
 /* Navbar toggler (Bootstrap) */
 .navbar-toggler {

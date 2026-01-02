@@ -40,3 +40,12 @@ backToTopBtn.addEventListener('click', () => {
     behavior: 'smooth'
   });
 });
+
+// ====== ADD NAVBAR SHADOW ON SCROLL ======
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 10) {
+    navbar.classList.add('navbar-shadow');
+  } else {
+    navbar.classList.remove('navbar-shadow');
+  }
+});
